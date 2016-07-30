@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 
 public class DirectionsFragment extends Fragment {
 
-    // Checking if Github detects the changes
+    // Checking if Github detects the changes!
     private static final String KEY_CHECKED_BOXES = "checked_boxes";
     CheckBox[] mCheckBoxes;
 
