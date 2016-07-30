@@ -1,4 +1,4 @@
-package com.lucasrizzotto.recipeapp.fragments.recipe_list;
+package com.lucasrizzotto.recipeapp.fragments.recipe_list.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,19 +10,15 @@ import android.widget.TextView;
 import com.lucasrizzotto.recipeapp.R;
 import com.lucasrizzotto.recipeapp.model.Recipes;
 
-public class ListAdapter extends RecyclerView.Adapter {
-
-    private final ListFragment.OnRecipeSelectedInterface mListener;
-
-    public ListAdapter(ListFragment.OnRecipeSelectedInterface listener) {
-        mListener = listener;
-    }
+public abstract class RecyclerAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(getLayoutId(), parent, false);
         return new ListViewHolder(view);
     }
+
+    protected abstract int getLayoutId();
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
@@ -33,6 +29,7 @@ public class ListAdapter extends RecyclerView.Adapter {
     public int getItemCount() {
         return Recipes.names.length;
     }
+
 
     private class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -55,8 +52,10 @@ public class ListAdapter extends RecyclerView.Adapter {
 
         @Override
         public void onClick(View view) {
-            mListener.onListRecipeSelected(mIndex);
+            onRecipeSelected(mIndex);
         }
     }
+
+    protected abstract void onRecipeSelected(int index);
 
 }

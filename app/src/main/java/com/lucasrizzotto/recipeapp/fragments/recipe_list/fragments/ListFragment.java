@@ -1,4 +1,4 @@
-package com.lucasrizzotto.recipeapp.fragments.recipe_list;
+package com.lucasrizzotto.recipeapp.fragments.recipe_list.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.lucasrizzotto.recipeapp.R;
+import com.lucasrizzotto.recipeapp.fragments.recipe_list.adapters.ListAdapter;
 
 public class ListFragment extends android.support.v4.app.Fragment {
 
@@ -21,7 +22,7 @@ public class ListFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         OnRecipeSelectedInterface listener = (OnRecipeSelectedInterface) getActivity();
-        View view = inflater.inflate(R.layout.fragment_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_recyclerview, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         ListAdapter listAdapter = new ListAdapter(listener);
         recyclerView.setAdapter(listAdapter);
