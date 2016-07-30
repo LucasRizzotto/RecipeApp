@@ -23,8 +23,14 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
         int i = getArguments().getInt(KEY_RECIPE_INDEX);
         getActivity().setTitle(Recipes.names[i]);
         View view = inflater.inflate(R.layout.fragment_viewpager, container, false);
+
         final IngredientsFragment ingredientsFragment = new IngredientsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(KEY_RECIPE_INDEX, i);
+        ingredientsFragment.setArguments(bundle);
+
         final DirectionsFragment directionsFragment = new DirectionsFragment();
+        directionsFragment.setArguments(bundle);
 
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewPager);
         viewPager.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
