@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.lucasrizzotto.recipeapp.R;
 import com.lucasrizzotto.recipeapp.fragments.recipe_details.ViewPagerFragment;
+import com.lucasrizzotto.recipeapp.fragments.recipe_details.tablet.DualPaneFragment;
 import com.lucasrizzotto.recipeapp.fragments.recipe_list.fragments.GridFragment;
 import com.lucasrizzotto.recipeapp.fragments.recipe_list.fragments.ListFragment;
 
@@ -64,6 +65,14 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onGridRecipeSelected(int i) {
-
+        DualPaneFragment fragment = new DualPaneFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(ViewPagerFragment.KEY_RECIPE_INDEX, i);
+        fragment.setArguments(bundle);
+        FragmentManager fragmentManager = getSupportFragmentManager(); // Gives access to the FRAGMENT TRANSACTION API
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.placeHolder, fragment, VIEWPAGER_FRAGMENT);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }
