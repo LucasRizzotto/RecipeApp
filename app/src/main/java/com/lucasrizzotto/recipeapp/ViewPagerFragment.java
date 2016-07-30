@@ -1,6 +1,5 @@
 package com.lucasrizzotto.recipeapp;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -10,11 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.CheckBox;
 
 
 public class ViewPagerFragment extends android.support.v4.app.Fragment {
 
+    public static final String KEY_IS_INGREDIENTS = "key_is_ingredients";
     public static final String KEY_RECIPE_INDEX = "recipe_index";
 
     @Nullable
@@ -24,12 +24,16 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
         getActivity().setTitle(Recipes.names[i]);
         View view = inflater.inflate(R.layout.fragment_viewpager, container, false);
 
-        final IngredientsFragment ingredientsFragment = new IngredientsFragment();
+        final CheckBoxesFragment ingredientsFragment = new CheckBoxesFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_RECIPE_INDEX, i);
+        bundle.putBoolean(KEY_IS_INGREDIENTS, true);
         ingredientsFragment.setArguments(bundle);
 
-        final DirectionsFragment directionsFragment = new DirectionsFragment();
+        final CheckBoxesFragment directionsFragment = new CheckBoxesFragment();
+        bundle = new Bundle();
+        bundle.putInt(KEY_RECIPE_INDEX, i);
+        bundle.putBoolean(KEY_IS_INGREDIENTS, false);
         directionsFragment.setArguments(bundle);
 
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewPager);
