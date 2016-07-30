@@ -1,17 +1,15 @@
-package com.lucasrizzotto.recipeapp;
+package com.lucasrizzotto.recipeapp.activities;
 
-import android.app.*;
-import android.app.Fragment;
-import android.support.v4.app.*;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.ListFragment;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements com.lucasrizzotto.recipeapp.ListFragment.OnRecipeSelectedInterface {
+import com.lucasrizzotto.recipeapp.R;
+import com.lucasrizzotto.recipeapp.fragments.recipe_details.ViewPagerFragment;
+import com.lucasrizzotto.recipeapp.fragments.recipe_list.ListFragment;
+
+public class MainActivity extends AppCompatActivity implements ListFragment.OnRecipeSelectedInterface {
 
     public static final String LIST_FRAGMENT = "list_fragment";
     public static final String VIEWPAGER_FRAGMENT = "viewpager_fragment";
@@ -22,9 +20,9 @@ public class MainActivity extends AppCompatActivity implements com.lucasrizzotto
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        com.lucasrizzotto.recipeapp.ListFragment saveFragment = (com.lucasrizzotto.recipeapp.ListFragment) getSupportFragmentManager().findFragmentByTag(LIST_FRAGMENT);
+        ListFragment saveFragment = (ListFragment) getSupportFragmentManager().findFragmentByTag(LIST_FRAGMENT);
         if(saveFragment == null) {
-            com.lucasrizzotto.recipeapp.ListFragment fragment = new com.lucasrizzotto.recipeapp.ListFragment();
+            ListFragment fragment = new ListFragment();
             FragmentManager fragmentManager = getSupportFragmentManager(); // Gives access to the FRAGMENT TRANSACTION API
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.add(R.id.placeHolder, fragment, LIST_FRAGMENT);

@@ -1,8 +1,7 @@
-package com.lucasrizzotto.recipeapp;
+package com.lucasrizzotto.recipeapp.model;
 
-/**
- * Created by Magnopus on 7/29/2016.
- */
+import com.lucasrizzotto.recipeapp.R;
+
 public class Recipes {
 
     public static String[] names = new String[]{"Crepes","Pancakes","Scones","French Toast", "Muffins", "Waffles","Toast", "Banana Bread"

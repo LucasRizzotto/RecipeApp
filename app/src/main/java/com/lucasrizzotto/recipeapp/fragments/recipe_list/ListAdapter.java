@@ -1,24 +1,15 @@
-package com.lucasrizzotto.recipeapp;
+package com.lucasrizzotto.recipeapp.fragments.recipe_list;
 
-import android.content.Context;
-import android.media.Image;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.lucasrizzotto.recipeapp.R;
+import com.lucasrizzotto.recipeapp.model.Recipes;
 
-import java.util.List;
-
-/**
- * Created by Magnopus on 7/29/2016.
- */
 public class ListAdapter extends RecyclerView.Adapter {
 
     private final ListFragment.OnRecipeSelectedInterface mListener;
