@@ -24,6 +24,10 @@ public class DirectionsFragment extends Fragment {
         String[] directions = Recipes.directions[i].split("`");
         mCheckBoxes = new CheckBox[directions.length];
         boolean[] checkedBoxes = new boolean[mCheckBoxes.length];
+        if(savedInstanceState != null && savedInstanceState.getBooleanArray(KEY_CHECKED_BOXES) != null)
+        {
+            checkedBoxes = savedInstanceState.getBooleanArray(KEY_CHECKED_BOXES);
+        }
         setUpCheckBoxes(directions, linearLayout, checkedBoxes);
 
         return view;
